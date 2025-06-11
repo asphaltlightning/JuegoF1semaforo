@@ -47,6 +47,17 @@ function handleClick() {
     allowClick = false;
     document.getElementById("try-again").style.display = "block";
     // Aquí puedes guardar en Google Sheets si quieres
+    fetch(API_URL, {
+  method: "POST",
+  body: JSON.stringify({
+    nombre: prompt("Introduce tu nombre:"),
+    correo: prompt("Introduce tu correo:"),
+    tiempo: reaction
+  }),
+  headers: {
+    "Content-Type": "application/json"
+  }
+});
   }
 }
 
@@ -65,7 +76,7 @@ function clearAll() {
   jumpStart = false;
 }
 
-const API_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbx9gUL0RjhYtCs6NAFWjqlD041HIr27dJGJyUa__baqFCwAagia5mY-wZWVG4BSlR9tag/exec';
 async function fetchTop10() {
   try {
     const res = await fetch(API_URL);
